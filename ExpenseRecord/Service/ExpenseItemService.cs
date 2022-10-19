@@ -3,9 +3,24 @@ namespace ExpenseRecord.Service
 {
     public class ExpenseItemService: IExpenseItemService
     {
-        public ExpenseItem[]? ExpenseItemsData { get; set; }
+        public List<ExpenseItem> ExpenseItemsData { get; set; }
         public ExpenseItemService() {
-            ExpenseItemsData = new ExpenseItem[0];
+            ExpenseItemsData = new List<ExpenseItem> {
+               new ExpenseItem {
+                Id = Guid.NewGuid().ToString(),
+                Description = "aaa",
+                Type = "a",
+                Amount = 123,
+                CreateTime = DateTime.Now,
+                },
+               new ExpenseItem {
+                Id = Guid.NewGuid().ToString(),
+                Description = "bbb",
+                Type = "b",
+                Amount = 123,
+                CreateTime = DateTime.Now,
+                }
+            };
         }
         public string CreateExpenseItem(ExpenseItem expenseItem)
         {
@@ -21,6 +36,7 @@ namespace ExpenseRecord.Service
             ExpenseItemsData.Append(tempExpenseItem);
             return id;
         }
+
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ExpenseRecord.Dto;
 using ExpenseRecord.Service;
+using System.Linq;
 namespace ExpenseRecord.Controllers
 {
     [Route("api/items")]
@@ -14,20 +15,27 @@ namespace ExpenseRecord.Controllers
             _expenseItemService = expenseItemService;
         }
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return Ok("Hello");
-        }
 
         [HttpPost]
         public async Task<IActionResult> CreateExpenseItem(ExpenseItem expenseItem)
         {
-
             var msg = _expenseItemService.CreateExpenseItem(expenseItem);
             return Ok(msg);
-
-
         }
+
+        [HttpGet]
+        public IActionResult ShowAllExpenseItems()
+        {
+            return Ok(_expenseItemService.ExpenseItemsData);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult DeleteExpenseItem([FromRoute] string id)
+        {
+            _expenseItemService.ExpenseItemsData.RemoveAll(item => item.Id == id);
+            return Ok();
+        }
+        
     }
 }

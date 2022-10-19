@@ -1,18 +1,22 @@
-﻿namespace ExpenseRecord.Dto
+﻿using Newtonsoft.Json;
+
+namespace ExpenseRecord.Dto
 {
-    public class ExpenseItemDto
+    public class ExpenseItem
     {
-        public class ToDoItemDto
-        {
-            public string? Id { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string? Id { get; set; }
 
-            public string? Description { get; set; }
+        [JsonProperty(PropertyName = "description")]
+        public string? Description { get; set; }
 
-            public string? Type { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string? Type { get; set; }
 
-            public double? Amount { get; set; }
+        [JsonProperty(PropertyName = "amount")]
+        public double? Amount { get; set; }
 
-            public DateTime? CreateTime { get; set; }
-        }
+        [JsonProperty(PropertyName = "createtime")]
+        public DateTime? CreateTime { get; set; }
     }
 }

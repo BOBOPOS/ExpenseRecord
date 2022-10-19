@@ -1,0 +1,16 @@
+<p>expense-record works!</p>
+<div>
+    <p>description:<input [(ngModel)]="description" placeholder="description ..." ></p>
+    <p>type:<input [(ngModel)]="type" placeholder="type ..." ></p>
+    <p>amount:<input [(ngModel)]="amount" placeholder="amount ..." >RMB</p>
+    <button>create</button>
+</div>
+
+<ng-container *ngFor="let item of displayList ">
+    <div>
+      <span>{{item.description}}&emsp;&emsp;</span>
+      <span>{{item.type}}&emsp;&emsp;</span>
+      <span>{{item.amount}}RMB&emsp;&emsp;</span>
+      <button (click)="DeleteItem(item.id)">delete</button>
+    </div>
+  </ng-container>
